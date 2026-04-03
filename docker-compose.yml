@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postglocal1234
+      POSTGRES_DB: customers_db
+
+  mock-server:
+    build: ./mock-server
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+
+  pipeline-service:
+    build: ./pipeline-service
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - mock-server
+    env_file:
+      - ./pipeline-service/.env
