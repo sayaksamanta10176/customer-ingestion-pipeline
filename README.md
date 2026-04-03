@@ -48,7 +48,7 @@ Stores customer data in the `customers` table.
 
 ### 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/sayaksamanta10176/customer-ingestion-pipeline.git
 cd project-root
 ```
 
